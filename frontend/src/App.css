@@ -1,0 +1,312 @@
+/* COC Inspector - Main Styles */
+/* Industrial dark theme for aerospace/manufacturing QA */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Industrial Color Palette */
+  --bg-primary: #0a0f14;
+  --bg-surface: #151c24;
+  --bg-surface-2: #1e2731;
+  --border: #2a3542;
+  
+  --primary: #ff6b35;
+  --primary-hover: #ff8555;
+  --secondary: #3d8bfd;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  
+  --text-primary: #e8edf4;
+  --text-secondary: #8b98a8;
+  --text-muted: #5a6572;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Loading Screen */
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 32px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+}
+
+.section-count {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Work Order Selector */
+.wo-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.wo-select {
+  flex: 1;
+  max-width: 400px;
+  padding: 10px 14px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+}
+
+.wo-select:focus {
+  border-color: var(--primary);
+}
+
+.wo-select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+/* Document Cards Grid */
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Validation Error */
+.validation-error {
+  background: #2a1515;
+  border: 1px solid var(--error);
+  border-left: 3px solid var(--error);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.error-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--error);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.error-subtitle {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.error-list {
+  list-style: none;
+  padding: 0;
+}
+
+.error-list li {
+  font-size: 11px;
+  color: var(--error);
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.error-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--error);
+}
+
+/* Merge Section */
+.merge-section {
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.merge-error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a1515;
+  border: 1px solid var(--error);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.merge-error .error-icon {
+  font-size: 24px;
+  color: var(--error);
+}
+
+.merge-error .error-message {
+  font-size: 12px;
+  color: var(--error);
+}
+
+.merge-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #152a1a;
+  border: 1px solid var(--success);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.merge-success .success-icon {
+  font-size: 24px;
+  color: var(--success);
+}
+
+.merge-success .success-message {
+  font-size: 12px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+.merge-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-merge {
+  padding: 14px 28px;
+  background: var(--primary);
+  border: none;
+  color: var(--bg-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.btn-merge:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.btn-merge:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.btn-download {
+  padding: 14px 28px;
+  background: var(--success);
+  border: none;
+  color: var(--bg-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.btn-download:hover {
+  background: #34d869;
+}
+
+/* Footer */
+.footer {
+  padding: 16px 24px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.footer-divider {
+  color: var(--border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .documents-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .merge-actions {
+    flex-direction: column;
+  }
+  
+  .btn-merge,
+  .btn-download {
+    width: 100%;
+  }
+}
